@@ -1,12 +1,12 @@
 from dotenv import load_dotenv
-from utils import setup_logger
+import logging
 import requests
 import os
 import sys
 
 
 load_dotenv()
-logger = setup_logger(__name__)
+logger = logging.getLogger(__name__)
 
 
 class Extractor:

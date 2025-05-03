@@ -5,3 +5,4 @@ ex = Extractor()
 ts = Transformer()
 
 weather_data = ex.api_request_creator()
+ts.transform_json_to_df(weather_data)
