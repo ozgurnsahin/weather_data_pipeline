@@ -1,0 +1,5 @@
+#envinoment file for keys
+.env
+#envirnoment
+.venv
+.pyc
