@@ -2,4 +2,7 @@
 .env
 #envirnoment
 .venv
+#cache
 .pyc
+#database
+.ini
