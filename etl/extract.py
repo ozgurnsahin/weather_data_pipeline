@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 import logging
-import requests
+import urllib.request
+import json
 import os
 import sys
 
@@ -12,20 +13,16 @@ logger = logging.getLogger(__name__)
 class Extractor:
     def __init__(self):
         self.api_key = os.getenv("API_KEY")
-        self.lat = 41.015137
-        self.lon = 28.979530
-        self.exclude = "minutely,current,daily,alerts"
-        self.url = f"http://api.openweathermap.org/data/2.5/forecast?id=524901&appid={self.api_key}"
+        self.url = f"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Istanbul,TR?unitGroup=metric&include=current&key={self.api_key}&contentType=json"
 
     def api_request_creator(self):
         try:
-            response = requests.get(self.url)
-            response.raise_for_status()
-            data = response.json()
+            response = urllib.request.urlopen(self.url)
+
+            json_data = json.load(response)
 
             logger.info("Fetching weather data")
-            return data
-
-        except requests.exceptions.HTTPError as http_err:
+            return json_data
+        except urllib.request.HTTPError as http_err:
             logger.error(f"HTTP error occurred: {http_err}")
             sys.exit(1)
