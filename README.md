@@ -27,16 +27,20 @@ dotenv: To handle environment variables (API keys, DB credentials).
 
 *1. Data Extraction*
 
-Weather Data: Collected using the VisualCrossing API. Data includes temperature, humidity, wind speed, and weather conditions.
+Weather Data: Collected using the VisualCrossing API. 
+
+Data includes temperature, humidity, wind speed, and weather conditions.
 
 *2. Data Transformation*
 
 Handle missing data and clean the dataset.
+
 Transforming measurements to correct datatype.
 
 *4. Data Loading*
 
 Store the cleaned and transformed data into a PostgreSQL database.
+
 Database schema include table for weather data.
 
 
