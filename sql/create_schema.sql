@@ -1,5 +1,5 @@
-CREATE TABLE weather_data IF NOT EXISTS(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE IF NOT EXISTS weather_data(
+    id SERIAL PRIMARY KEY ,
     date DATE NOT NULL,
     temperature DECIMAL(4,1) NOT NULL,
     feels_like DECIMAL(4,1) NOT NULL,

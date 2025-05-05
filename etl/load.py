@@ -12,6 +12,10 @@ from sql.config import GenerateConfig
 class Loader:
     _instance = None
 
+    def __init__(self):
+        self.conn = psycopg2.connect(**self.db_config)
+        self.cursor = self.conn.cursor()
+
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super(Loader, cls).__new__(cls)
@@ -19,8 +23,6 @@ class Loader:
         return cls._instance
 
     def __enter__(self):
-        self.conn = psycopg2.connect(**self.db_config)
-        self.cursor = self.conn.cursor()
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):

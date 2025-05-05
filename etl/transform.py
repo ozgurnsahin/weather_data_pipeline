@@ -34,7 +34,7 @@ class Transformer:
             df["wind_speed"] = pd.to_numeric(df["wind_speed"], errors="coerce")
 
             # Handle missing values
-            df.fillna(method="ffill", inplace=True)  # Forward fill missing values
+            df.ffill(inplace=True)  # Forward fill missing values
             df.dropna(inplace=True)  # Drop any remaining missing values
 
             return df
