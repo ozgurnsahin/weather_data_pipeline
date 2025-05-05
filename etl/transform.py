@@ -37,6 +37,7 @@ class Transformer:
             df.ffill(inplace=True)  # Forward fill missing values
             df.dropna(inplace=True)  # Drop any remaining missing values
 
+            logger.info("Weather data is transformed")
             return df
         except ValueError as err:
-            logger.error(err)
+            logger.error(f"Data transformation is failed error:{err}")

@@ -4,9 +4,13 @@ from pathlib import Path
 import pandas as pd
 import sys
 import os
+import logging
+
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from sql.config import GenerateConfig
+
+logger = logging.getLogger(__name__)
 
 
 class Loader:
@@ -42,7 +46,9 @@ class Loader:
         try:
             self.cursor.execute(query)
             self.conn.commit()
+            logging.info("Table are created for data load")
         except DatabaseError as e:
+            logging.error(f"Table creation is failed error: {e}")
             raise e
 
     def insert_weather_data(self, weather_data):
@@ -80,6 +86,8 @@ class Loader:
                     ),
                 )
                 self.conn.commit()
+                logging.info("Weather data is loaded")
         except DatabaseError as e:
             self.conn.rollback()
+            logging.error(f"Data insertion is failed error: {e}")
             raise DatabaseError(f"Error inserting weather data: {e}")
