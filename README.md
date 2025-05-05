@@ -1,4 +1,4 @@
-**Weather and Air Quality ETL Pipeline**
+**Weather Data ETL Pipeline**
 
 
 **Project Overview**
