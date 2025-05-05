@@ -41,6 +41,7 @@ class Loader:
             query = file.read()
         try:
             self.cursor.execute(query)
+            self.conn.commit()
         except DatabaseError as e:
             raise e
 
@@ -78,6 +79,7 @@ class Loader:
                         float(row["wind_speed"]),
                     ),
                 )
+                self.conn.commit()
         except DatabaseError as e:
             self.conn.rollback()
             raise DatabaseError(f"Error inserting weather data: {e}")
