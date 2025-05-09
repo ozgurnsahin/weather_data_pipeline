@@ -15,6 +15,7 @@ Database: PostgreSQL
 Data Sources:
 
 Weather API: VisualCrossing
+
 Python Libraries:
 
 requests: For interacting with APIs.
